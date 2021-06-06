@@ -65,6 +65,9 @@ in stdenv.mkDerivation rec {
 
     substituteInPlace src/terralib.lua \
       --subst-var-by NIX_LIBC_INCLUDE ${lib.getDev stdenv.cc.libc}/include
+
+    substituteInPlace src/CMakeLists.txt \
+      --subst-var INCLUDE_PATH
   '';
 
   preConfigure = ''
