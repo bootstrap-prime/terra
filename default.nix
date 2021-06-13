@@ -65,9 +65,6 @@ in stdenv.mkDerivation rec {
 
     substituteInPlace src/terralib.lua \
       --subst-var-by NIX_LIBC_INCLUDE ${lib.getDev stdenv.cc.libc}/include
-
-    substituteInPlace src/CMakeLists.txt \
-      --subst-var INCLUDE_PATH
   '';
 
   preConfigure = ''
@@ -78,6 +75,7 @@ in stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
+    exit 1
     install -Dm755 -t $bin/bin bin/terra
     install -Dm755 -t $out/lib lib/terra${stdenv.hostPlatform.extensions.sharedLibrary}
     install -Dm644 -t $static/lib lib/libterra_s.a
