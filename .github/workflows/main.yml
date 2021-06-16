@@ -182,7 +182,6 @@ jobs:
       - run: ./travis.sh
         env:
           DOCKER_BUILD: ${{ matrix.distro }}
-          DOCKER_LLVM: ${{ matrix.llvm }}
   nix:
     name: Nix Build (nixpkgs-${{ matrix.nixpkgs }}, enableCUDA=${{ matrix.cuda }})
     runs-on: ubuntu-latest
