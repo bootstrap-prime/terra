@@ -15,9 +15,7 @@
         };
       in
         rec {
-
-          defaultPackage = pkgs.callPackage ./default.nix {};
-
+          defaultPackage = args: pkgs.callPackage ./default.nix {}//args;
         }
     );
 }
